@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let = nilainya bisa di rubag, tapi tidak bisa di dekalarasikan ulang
+
+        let nama = "daffa"
+
+        console.log(nama)
+
+
+        //var= nilainya bisa di ubah
+        var alamat = "bogor"
+        var alamat = "jkt"
+        console.log(alamat)
+
+        //const= nilainya tidak bisa di ubah
+        const nilaiTetap = "10";
+        console.log(nilaiTetap)
+
+        // object 
+        const peserta = {
+            nama: "daffa"
+
+        };
+        peserta.alamat = "kalipasir";
+        console.log(peserta);
+
+        // immutabilitty (memnuat object baru menggunakan spred operator)
+        const pesertaBaru = { ...peserta, nim: "19220787", namates: "bono" }
+        console.log(pesertaBaru)
+
+        // 1. string dan tempelate literals
+        const namaDepan = "daffa"
+        const namaBelakang = "pratama"
+        let literalContoh = `
+        Nama Depan  : ${namaDepan}
+        Nama Belakang  : ${namaBelakang}
+        `;
+        console.log(namaDepan + " " + namaBelakang)
+        console.log(literalContoh)
+
+        // operator aritmatika
+        let angka1 = 10;
+        let angka2 = 20;
+        console.log(angka1 * angka2);
+
+
+        let a = 7;
+        a += 10
+        console.log(a)
+
+        //operator perbandingan dan logika
+        let user = "admin"
+        let password = "1234567"
+
+        if (user === "admin" && password === "1234567") {
+            console.log("login suskes");
+        } else {
+            console.log("gagal");
+        }
+
+        console.log("5 > 10 :", 5 > 10);
+        console.log("5 < 10 :", 5 < 10);
+
+
+
+
+        // let tenaryyy = (umur >= 17) ? "dewasa" : "bocil";
+        // console.log(ternaryyy);
+
+
+        //switchcase
+        const username = "kasir"
+        switch (username) {
+            case "pimpinan":
+                console.log("ini pimpinan")
+                break;
+            case "kasir":
+                console.log("ini kasir")
+                break;
+            case "admin":
+                console.log("ini admin")
+                break;
+            default:
+
+        }
+
+
+
+        // IF TERNARY
+
+        let umur = 20;
+        if (umur >= 10) {
+            console.log("dewasa");
+        } else {
+            console.log("bocil")
+
+        }
+
+        //tugas
+
+        let jarakBogor = 2000;
+        let jarakDepok = 4000;
+        let jarakLainnya = 6000;
+
+        let berat = 10;
+        let tujuan = "bogor";
+        let biaya = 0
+
+        if (tujuan === "bogor") biaya = 2000 * berat
+        else if (tujuan === "depok") biaya = 4000 * berat
+        else biaya = 6000 * berat
+
+        console.log(`Biaya ke ${tujuan} adalah: ${biaya}`);
+
+
+        // if (jarakBogor == 2000) {
+        //     console.log("2000");
+        // } else if (jarakDepok == 4000) {
+        //     console.log("4000")
+        // } else (jarakLainnya == 6000)
+        // console.log("4000")
+
+        // console.log(berat * jarakBogor)
+
+
+
+        //function
+        // function demoScope() {
+        //     if (true) {
+        //         var varVaraible = "saya var function scope"
+        //         let letVaraible = "saya let block scope"
+        //         const constVaraible = "saya const block scope"
+        //     }
+
+        //     console.log(varVaraible)
+        //     console.log(letVaraible)
+        //     console.log(constVaraible)
+        // }
+        // demoScope()
+
+        //traditional function expression
+
+        const squareES5 = function (x) {
+            return x * x;
+        }
+        console.log(squareES5(4))
+
+
+        const squareES6 = (x) => {
+            return x * x;
+        }
+        console.log(squareES5(5))
+
+
+        //arrow function es6 implicit return
+        const squareES6Implicit = (x) => x * x;
+        console.log(squareES6Implicit(10))
+
+
+        //penggunaan pada method array
+        const fruits = ["apel", "nanas", "semangka"]
+        const squareFruits = fruits.map((fruit) => fruit)
+        console.log(squareFruits[0])
+
+
+        // // FOR
+        // for (let index = 0; index <= 5; index++) {
+        //     console.log("perulangan ke- " + index);
+        // }
+
+        // // WHILE
+        // let no = 0;
+
+        // while (no <= 5) {
+        //     console.log(`ini nomor ke - ${no}`);
+        //     no++;
+        // }
+
+        // // DO WHILE
+        // let xy = 3;
+
+        // do {
+        //     console.log(`nilai x = ${x}`);
+        //     x++;
+        // } while (xy <= 5);
+
+
+        //looping for, while , do while
+
+
+        for (let index = 0; index <= 5; index++) {
+
+            console.log("perulangan ke- " + index)
+        }
+        let no = 1
+        while (no <= 5) {
+            console.log(`ini nomer ke - ${no}`);
+            no++;
+        }
+
+
+
+        let x = 1
+        do {
+            console.log(`nilai x = ${x}`);
+            x++;
+        } while (x <= 5);
+
+    </script>
+</body>
+
+</html>

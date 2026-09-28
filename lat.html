@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        let nilaiTeori = 100;
+        let nilaiPraktek = 100;
+        let nilaiKehadiran = 100;
+        let pelanggaran = true;
+
+        let nama = "daffa";
+
+        const rataRata = (nilaiTeori + nilaiPraktek) / 2;
+
+        let status = "";
+
+        if (nilaiKehadiran < 90) {
+            status = "Tidak Lulus (Kehadiran kurang)";
+        } else if (nilaiTeori < 75) {
+            status = "Tidak Lulus (Teori kurang)";
+        } else if (nilaiPraktek < 80) {
+            status = "Tidak Lulus (Praktek kurang)";
+        } else if (pelanggaran) {
+            status = "Tidak Lulus (Pelanggaran berat)";
+        } else {
+            status = "Lulus";
+        }
+
+        console.log(`nama: ${nama}`);
+        console.log(`rata rata: ${rataRata}`);
+        console.log(`status: ${status}`);
+
+
+
+
+    </script>
+</body>
+
+</html>
