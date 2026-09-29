@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom</title>
+</head>
+
+<body>
+    <h1 id="heading">selamat datang di ppkd</h1>
+    <h3>1</h3>
+    <h3>2</h3>
+    <h3>3</h3>
+</body>
+
+</html>
+
+
+
+<!-- object : struktur data {} -->
+
+<script>
+
+    // const heading = document.getElementById('heading')
+    // const headingId = document.getElementsByClassName('heading')
+    const heading3All = document.querySelectorAll('h1')
+    console.log(heading3All);
+
+
+    //textCenter
+    //innerHtml
+    heading.innerText = "selamay datttttang di ppkd jakpus"
+    heading.textContent = "selamay datang di ppkd jakpus"
+    heading.innerHTML = "selamayt  <u> dayang di ppkd jakpus </u>"
+
+
+
+
+
+    let peserta = {
+        nama: "daffa",
+        alamat: "jkt",
+        jurusan: "si"
+    }
+
+    console.log(peserta.alamat)
+    console.log(peserta["alamat"])
+
+    peserta.nilai = 80;
+    console.log(peserta);
+
+    delete peserta.nilai;
+    peserta.status = "baru";
+    peserta["email"] = "daffa@gmail.com"
+    console.log(peserta);
+
+
+    const siswa = [
+        {
+            id: 1,
+            nama: "budi",
+            nilai: 100
+        },
+        {
+            id: 2,
+            nama: "daffa",
+            nilai: 90
+        },
+        {
+            id: 3,
+            nama: "deva",
+            nilai: 70
+        },
+    ]
+
+    console.log(siswa)
+
+
+    // looping foreach
+    siswa.forEach(function (data, index) {
+
+        console.log("siswa", data)
+        console.log("data siswa", data)
+        console.log(`data siswa dengan index ${index} yaitu bernama ${data.nama}`)
+    })
+
+
+    const siswaLulus = siswa.filter((s) => {
+        return s.nilai >= 75;
+    }
+    )
+
+    console.log(siswaLulus);
+
+</script>

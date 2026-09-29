@@ -1,0 +1,49 @@
+<!-- if ststment  -->
+
+<script>
+    // const nilai = 80
+    // const lulus = 75
+    // if (nilai >= lulus) {
+    //     console.log("selamat anda lulus")
+    // } else {
+
+    //     console.log("selamat tidak lulus")
+    // }
+
+    // else if
+
+    const totalBelanja = 3_000_000;
+    const isMember = false;
+    let diskon = 0;
+
+    if (isMember || totalBelanja >= 2_000_000) {
+        diskon = 0.1; // diskon 10%
+    } else if (totalBelanja >= 5000000) {
+        diskon = 0.2;
+    } else {
+        diskon = 0
+    }
+
+    const potongan = totalBelanja * diskon;
+    const bayar = totalBelanja - potongan;
+
+    // console.log("potongan harga : ", potongan)
+    console.log(`potongan harga : ${potongan}`)
+    console.log(`Total Bayar : ${bayar}`)
+
+
+
+    // switch 
+    const color = "merah"
+    switch (color) {
+        case "biru":
+            console.log("iya itu biru");
+            break;
+        case "merah":
+            console.log("iya merah");
+            break
+        default:
+            console.log("bukan biru");
+    }
+
+</script>

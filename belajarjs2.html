@@ -1,0 +1,57 @@
+<!-- operator
+ + _ / *                  -->
+
+<script>
+    const nilai1 = 10
+    const nilai2 = parseInt(20)
+    const jumlah = nilai1 + nilai2;
+
+
+    // assignment operator : menambahkan nilai ke dalam suatu variabel
+    let total = 10;
+    total += 10;
+    total -= 10;
+
+
+    // operator increment dan decrement : menambah dan mengurang
+    let nomor = 1;
+    nomor++;
+    nomor--;
+
+
+    //operator perbandingan < (), > (), ==(membandingkan), ===(membandingkan sampai ke tipe data), !==(tidak sama dengan)
+    let nama = "budi"
+    let konfirmasiNama = "budi"
+    let konformasi = (nama === konfirmasiNama); //(true)
+
+
+    let umur = 20
+    let batasUmur = 17
+    let batasan = (umur > 17) //false
+
+
+    //operator logika : &&, OR, !
+
+    let budi = "budi"
+    let andi = "andi"
+
+        (budi && andi)
+
+
+
+    let username = "admin"
+    let password = "admin"
+
+        (username === "admin" && password === "admin") //login berhasil
+
+
+// operator ternary 
+    const age = 20;
+    if (age >= 17) {
+        console.log (`dewasa`)
+    } else {
+        console.log (`anak-anak`)
+    }
+    const statusAge = age >= 17 ? `dewasa` : `anak-anak`
+    console.log(statusAge)
+</script>

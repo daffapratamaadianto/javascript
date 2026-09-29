@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom</title>
+</head>
+
+<body>
+    <h1 id="title">Teks awal</h1>
+    <p id="description">description awal</p>
+    <p id="status">status awal</p>
+
+    <div id="modul"></div>
+    <ul id="modulUl"></ul>
+
+    <script>
+        const body = document.body;
+        const title = document.getElementById('title')
+        const desc = document.getElementById('description')
+        const status = document.querySelector('#status')
+
+        body.style.backgroundColor = "green";
+        title.style.color = "white"
+        title.innerText = "pppd jakpus"
+
+        desc.style.color = "white";
+        desc.innerText = "selamat datang dii ppkd jakarta pusat";
+
+        status.style.color = "white"
+        status.innerText = "tersetifikasi BNSP"
+
+        const listUnit = [
+            "j.6200202.050.09 - asekkkkkkkk dahhhhhh",
+            "j.6233202.050.09 - asoyyyyyyyyy dahhhhhh",
+        ]
+
+
+        //creat element
+        const modul = document.getElementById('modul')
+        const modulUl = document.getElementById('modulUl')
+        listUnit.forEach((unitText) => {
+            const itemLi = document.createElement('li')
+
+            itemLi.innerText = unitText
+            itemLi.style.marginBottom = "8px"
+
+            modulUl.appendChild(itemLi)
+        })
+        // createEelement(
+
+        const isiModul = document.createElement('p')
+        isiModul.innerText = "laravel adalah framework php"
+        isiModul.style.color = "white"
+
+        modul.appendChild(isiModul)
+
+    </script>
+</body>
+
+</html>
