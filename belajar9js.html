@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM || To Do List</title>
+</head>
+
+<body>
+    <h2>Daftar Rencana Kerja</h2>
+    <input type="text" id="task" placeholder="Masukkan Tugas Baru..">
+
+    <button id="tambah">Tambah</button>
+    <button id="hapus">Hapus Semua</button>
+
+    <ul id="tasks"></ul>
+    <script>
+
+        const taskName = document.getElementById('task');
+        const listTasks = document.getElementById('tasks');
+
+        function createTask() {
+            const task = taskName.value;
+            if (task === "") {
+                alert('Task tidak boleh kosong!');
+                taskName.focus();
+                return;
+                //return biar berhenti, sama seperti break,kalo php pakai exit
+                //kalau ga pakai return, bisa pakai else
+            }
+
+            //pakai createElement()
+            const li = document.createElement('li');
+
+
+            li.innerText = task;
+
+            li.innerHTML = `
+                <span> ${
+                    
+                    task}</span>
+                <button class="btn-remove"> hapus</button>
+                
+            `
+            listTasks.appendChild(li);
+            taskName.value = "";
+
+            // const btnRemove = document.createElement('button')
+            // btnRemove.innerText = "Hapus";
+            // li.appendChild(btnRemove);
+
+            // btnRemove.addEventListener('click', function () {
+            //     li.remove()
+            // })
+
+        }
+        document.getElementById('tambah').addEventListener('click', () => {
+            createTask();
+        })
+
+        taskName.addEventListener('keyup', (event) => {
+            if (event.key === "Enter") {
+                createTask();
+            }
+        })
+
+        document.getElementById('hapus').addEventListener('click', () => {
+            listTasks.innerText = "";
+        })
+
+        listTasks.addEventListener('click', (e) => {
+            // cek ada ga si element yang menganduk kata class btn remove
+            if (e.target.classlist.contains('btn-remove')) {
+                const li = e.target.parentEelement
+                li.remove()
+            }
+        })
+    </script>
+</body>
+
+</html>

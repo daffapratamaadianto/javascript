@@ -1,0 +1,51 @@
+<!-- event : kejadian, yang terjaadi on click -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom dan event</title>
+</head>
+
+<body>
+    <!-- elementTarget.addEventListener(); -->
+    <h1>form sapaan</h1>
+    <input type="text" id="nama" placeholder="masukan nama">
+
+    <button id="simpan">klik</button>
+    <button id="hapus">delete</button>
+
+    <p id="sapaan">haloooooo</p>
+    <script>
+        const heading = document.querySelector('h1')
+        const nama = document.querySelector('#nama')
+        const sapaan = document.querySelector('#sapaan')
+
+        function prosesSapaan() {
+            sapaan.innerText = `halo nama : ${nama.value}`
+            nama.value = ""
+        }
+
+        document.getElementById('simpan').addEventListener('click', () => {
+            // heading.innerText = "PPKD JAKPUSSSSS"
+            // sapaan.innerText = `halo nama : ${nama.value}`
+            prosesSapaan()
+        })
+
+        nama.addEventListener('keyup', function (event) {
+            if(event.key === "Enter") {
+                prosesSapaan()
+            }
+        })
+
+        document.getElementById('hapus').addEventListener('click', function () {
+            // heading.innerText = ""
+            prosesSapaan()
+        }
+        )
+    </script>
+</body>
+
+</html>

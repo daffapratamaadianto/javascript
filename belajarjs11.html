@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom || event change</title>
+</head>
+
+<body>
+    <h2>Daftar peserta pelatihan</h2>
+    <label for="">fiter berdasarkan jurusan</label>
+    <select name="" id="filterJurusan">
+        <option value="semua">pilih semua</option>
+        <option value="web">webprog</option>
+        <option value="tkj">teknik jaringan</option>
+        <option value="tekom">teknik komputer</option>
+        <option value="mobile">mobile apps</option>
+    </select>
+
+    <label for=""> cari peserta</label>
+    <input type="text" id="cariPeserta" placeholder="Cari Peserta ....">
+    <br>
+
+    <ul id="listPeserta"></ul>
+
+    <script>
+        const peserta = [
+            {
+                id: 1, nama: "budi", jurusan: "web",
+            },
+            {
+                id: 2, nama: "dp", jurusan: "mobile",
+
+            },
+            {
+                id: 3, nama: "wowo", jurusan: "tkj",
+
+            },
+            {
+                id: 4, nama: "wiwi", jurusan: "tekom",
+
+            },
+            {
+                id: 5, nama: "wuwu", jurusan: "tkj",
+
+            }
+
+        ]
+
+        const listPeserta = document.getElementById('listPeserta')
+        const filterJurusan = document.getElementById('filterJurusan')
+        const cariPeserta = document.getElementById('cariPeserta')
+
+        function getPeserta(dataPeserta) {
+
+
+            peserta.forEach((p) => {
+                listPeserta.innerHTML = ""
+                dataPeserta.forEach((p) => {
+                    const li = document.createElement('li')
+                    li.innerText = `${p.nama} - jurusan : ${p.jurusan}`
+                    listPeserta.appendChild(li)
+                })
+
+            })
+        }
+
+        function searchPeserta() {
+            const keyword = cariPeserta.value.toLowerCase().trim()
+            const valueJurusan = filterJurusan.value
+
+            const hasilFilterJurusan = peserta.filter((data) => {
+                const matchName = data.nama.toLowerCase().includes(keyword)
+                console.log(keyword, matchName)
+                const matchMajor = (valueJurusan === "semua") || (data.jurusan === valueJurusan)
+
+                return matchName && matchMajor
+            })
+
+            getPeserta(hasilFilterJurusan)
+
+        }
+        
+
+        filterJurusan.addEventListener('change', searchPeserta)
+        cariPeserta.addEventListener('input', searchPeserta)
+
+
+
+
+
+
+
+
+
+        // filterJurusan.addEventListener('change', function (e) {
+        //     const selectedJurusan = e.target.value
+        //     if (selectedJurusan === "semua") {
+        //         //munculkan data peserta
+        //         getPeserta(peserta)
+        //     } else {
+        //         const hasilFilter = peserta.filter((p) => {
+        //             return p.jurusan === selectedJurusan; //tkj
+        //         })
+        //         getPeserta(hasilFilter)
+        //         console.log("hasil filter", hasilFilter)
+
+        //         // munculkan data peserta yang sudah di filter
+        //     }
+        // })
+
+        
+
+
+
+
+        getPeserta(peserta)
+    </script>
+</body>
+
+</html>
