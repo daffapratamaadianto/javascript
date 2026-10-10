@@ -81,7 +81,7 @@ export const createUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
-        const[user] = await pool.query("INSERT INTO users(name,email,password) VALUES(?,?,?)", [name,email,password]);
+        const [user] = await pool.query("INSERT INTO users(name,email,password) VALUES(?,?,?)", [name, email, password]);
 
         // const newUser = {
         //     id: USERS.length > 0 ? USERS[USERS.length - 1].id + 1 : 1,
@@ -95,7 +95,7 @@ export const createUser = async (req, res) => {
         return res.status(201).json({
             status: true,
             message: 'create user succes',
-            data: {id: user.insertId,name,email},
+            data: { id: user.insertId, name, email },
         });
 
     } catch (error) {
@@ -107,9 +107,26 @@ export const createUser = async (req, res) => {
     }
 }
 
-export const updateUser = (req, res) => {
+export const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
     const { name, email, password } = req.body;
+
+    try {
+        const [user] = await pool.query("UPDATE users SET nama=?, email=?, password=? WHERE id=?", [name, email, password, id]);
+        return res.status(200).json({
+            status: true,
+            message: 'update user success',
+            data: USERS[userIndex],
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: 'gagal',
+            error: error.message,
+        })
+
+    }
+
 
     const userIndex = USERS.findIndex((u) => u.id === id)
     USERS[userIndex] = {
@@ -118,16 +135,29 @@ export const updateUser = (req, res) => {
         ...(email && { email }),
         ...(password && { password }),
     }
-    return res.status(200).json({
-        status: true,
-        message: 'update user success',
-        data: USERS[userIndex],
-    })
+
 }
 
-export const deleteUser = (req, res) => {
+export const deleteUser = async (req, res) => {
     const id = parseInt(req.params.id);
-    const userIndex = USERS.findIndex((u) => u.id === id)
+    // const userIndex = USERS.findIndex((u) => u.id === id)
+
+    try {
+        const [user] = await pool.query("DELETE FROM users WHERE id=?", [id]);
+        //   const deletedUser = USERS.splice(userIndex, 1)[0];
+        return res.status(200).json({
+            status: true,
+            message: "delete user succes",
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: 'gagal delete',
+            error: error.message,
+        })
+
+    }
+
 
     if (userIndex === -1) {
         return res.status(404).json({
@@ -135,10 +165,6 @@ export const deleteUser = (req, res) => {
             message: "User No found",
         })
     }
-    const deletedUser = USERS.splice(userIndex, 1)[0];
-    return res.status(200).json({
-        status: true,
-        message: "delete user succes",
-    })
+
 }
 
