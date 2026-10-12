@@ -29,7 +29,7 @@ export const getAllUser = async (req, res) => {
 
     try {
 
-        const [rows] = await pool.query("SELECT id, email, is_active FROM users");
+        const [rows] = await pool.query("SELECT id, name, email,  is_active  FROM users");
         return res.status(200).json({
             status: true,
             massage: "fetch user Succes",
@@ -52,7 +52,7 @@ export const getUserById = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         //find
-        const user = await pool.query("SELECT id, email, is_active FROM users WHERE id=?",
+        const [user] = await pool.query("SELECT id, name, email, password, is_active FROM users WHERE id=?",
             [id]);
         if (!user) {
             res.status(404).json({
@@ -108,11 +108,16 @@ export const createUser = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const { name, email, password } = req.body;
-
     try {
-        const [user] = await pool.query("UPDATE users SET nama=?, email=?, password=? WHERE id=?", [name, email, password, id]);
+        const id = parseInt(req.params.id);
+        const { name, email, password, is_active } = req.body;
+
+        if (!password) {
+            const [user] = await pool.query("UPDATE users SET name=?, email=?, is_active=? WHERE id=?", [name, email, is_active, id]);
+        } else {
+            const [user] = await pool.query("UPDATE users SET name=?, email=?, password=? WHERE id=?", [name, email, password, is_active, id]);
+        }
+
         return res.status(200).json({
             status: true,
             message: 'update user success',
